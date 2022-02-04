@@ -21,6 +21,10 @@ public class Block : MonoBehaviour
       _player.AddScore(_point);
       Destroy(gameObject);
     }
+    else if (_hits == 0)
+    {
+      return;
+    }
     else
     {
       GetHit(0);
