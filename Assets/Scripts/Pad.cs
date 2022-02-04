@@ -4,6 +4,11 @@ public class Pad : MonoBehaviour
 {
   private void Update()
   {
+    FollowMouse();
+  }
+
+  public void FollowMouse()
+  {
     Vector3 mousePosition = Input.mousePosition;
     if (Camera.main == null) return;
     Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);

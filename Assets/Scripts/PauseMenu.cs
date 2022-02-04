@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
   [SerializeField] private GameObject _pauseMenuUI;
+  [SerializeField] private Pad _pad;
 
   private bool _gameIsPaused = false;
 
@@ -44,6 +45,7 @@ public class PauseMenu : MonoBehaviour
   {
     PauseTimeScale();
     _gameIsPaused = true;
+    _pad.enabled = false;
   }
 
   private static void PauseTimeScale()
@@ -55,6 +57,7 @@ public class PauseMenu : MonoBehaviour
   {
     RunTimeScale();
     _gameIsPaused = false;
+    _pad.enabled = true;
   }
 
   private static void RunTimeScale()
