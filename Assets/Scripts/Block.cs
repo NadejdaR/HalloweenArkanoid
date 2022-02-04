@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Block : MonoBehaviour
@@ -8,10 +9,24 @@ public class Block : MonoBehaviour
   [SerializeField] private int _point;
   [SerializeField] private int _hits;
   [SerializeField] private SpriteRenderer _spriteRenderer;
+  [SerializeField] private bool _isSecret;
 
   private PlayerStatManager _statManager;
+
+  private void Start()
+  {
+    if (_isSecret)
+    {
+      _spriteRenderer.enabled = false;
+    }
+  }
+
   private void OnCollisionEnter2D(Collision2D col)
   {
+    if (_isSecret)
+    {
+      _spriteRenderer.enabled = true;
+    }
     if (_hits > 1)
     {
       GetHit(1);
