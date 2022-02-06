@@ -189,7 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0151d84ebf4275a4e843d9e224b40749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _winMenuUI: {fileID: 6970884983354071971}
 --- !u!1 &6970884983387596029
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,7 +2222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pauseMenuUI: {fileID: 6970884985317677768}
   _settingMenuUI: {fileID: 6970884984909002980}
-  _pad: {fileID: 0}
+  _pad: {fileID: 3387086970552668462, guid: d3085dbc09d0f2a45b64a3f60cb5a59a, type: 3}
 --- !u!114 &6970884984327200177
 MonoBehaviour:
   m_ObjectHideFlags: 0

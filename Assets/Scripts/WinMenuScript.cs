@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WinMenuScript : MonoBehaviour
 {
-  private PlayerStatManager _statManager;
+  [SerializeField]private PlayerStatManager _statManager;
 
   private void Start()
   {

@@ -26,6 +26,11 @@ public class Block : MonoBehaviour
       _spriteRenderer.enabled = false;
   }
 
+  private void OnDestroy()
+  {
+    OnDestroyed?.Invoke(this);
+  }
+
   private void OnCollisionEnter2D(Collision2D col)
   {
     if (_isSecret)
@@ -36,7 +41,7 @@ public class Block : MonoBehaviour
     {
       _player.AddScore(_point);
       Destroy(gameObject);
-      OnDestroyed?.Invoke(this);
+      // OnDestroyed?.Invoke(this);
     }
     else if (_hits == 0)
       return;

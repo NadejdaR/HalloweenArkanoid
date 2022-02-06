@@ -3,8 +3,7 @@ using UnityEngine;
 public class LossMenuScript : MonoBehaviour
 {
   [SerializeField] private GameObject _lossMenuUI;
-
-  private PlayerStatManager _statManager;
+  [SerializeField]private PlayerStatManager _statManager;
 
   internal void Start()
   {
