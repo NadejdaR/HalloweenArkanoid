@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
   [SerializeField] private GameObject _pauseMenuUI;
+  [SerializeField] private GameObject _settingMenuUI;
   [SerializeField] private Pad _pad;
 
   private bool _gameIsPaused = false;
@@ -39,6 +40,18 @@ public class PauseMenu : MonoBehaviour
   {
     RunGame();
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+  }
+
+  public void Settings()
+  {
+    _pauseMenuUI.SetActive(false);
+    _settingMenuUI.SetActive(true);
+  }
+
+  public void CloseSettings()
+  {
+    _settingMenuUI.SetActive(false);
+    _pauseMenuUI.SetActive(true);
   }
 
   private void PauseGame()
