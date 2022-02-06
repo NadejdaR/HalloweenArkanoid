@@ -13,37 +13,35 @@ public class Block : MonoBehaviour
 
   private PlayerStatManager _statManager;
 
+  public static event Action OnCreated;
+  public static event Action<Block> OnDestroyed;
+  
   private void Start()
   {
+    if (_hits == 0)
+      return;
+    OnCreated?.Invoke();
+
     if (_isSecret)
-    {
       _spriteRenderer.enabled = false;
-    }
   }
 
   private void OnCollisionEnter2D(Collision2D col)
   {
     if (_isSecret)
-    {
       _spriteRenderer.enabled = true;
-    }
     if (_hits > 1)
-    {
       GetHit(1);
-    }
     else if (_hits == 1)
     {
       _player.AddScore(_point);
       Destroy(gameObject);
+      OnDestroyed?.Invoke(this);
     }
     else if (_hits == 0)
-    {
       return;
-    }
     else
-    {
       GetHit(0);
-    }
 
     AudioManager.Instance.PlayOnShot(_audioClip);
   }

@@ -7,7 +7,7 @@ public class Pad : MonoBehaviour
     FollowMouse();
   }
 
-  public void FollowMouse()
+  private void FollowMouse()
   {
     Vector3 mousePosition = Input.mousePosition;
     if (Camera.main == null) return;
