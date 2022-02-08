@@ -5,14 +5,13 @@ public class PauseMenu : MonoBehaviour
 {
   [SerializeField] private GameObject _pauseMenuUI;
   [SerializeField] private GameObject _settingMenuUI;
-  [SerializeField] private Pad _pad;
 
-  private bool _gameIsPaused = false;
+  public static bool GameIsPaused { get; private set; }
 
   private void Update()
   {
     if (!Input.GetKeyDown(KeyCode.Escape)) return;
-    if (_gameIsPaused)
+    if (GameIsPaused)
       Resume();
     else
       Pause();
@@ -62,8 +61,7 @@ public class PauseMenu : MonoBehaviour
   private void PauseGame()
   {
     PauseTimeScale();
-    _gameIsPaused = true;
-    _pad.enabled = false;
+    GameIsPaused = true;
   }
 
   private static void PauseTimeScale()
@@ -74,8 +72,7 @@ public class PauseMenu : MonoBehaviour
   private void RunGame()
   {
     RunTimeScale();
-    _gameIsPaused = false;
-    _pad.enabled = true;
+    GameIsPaused = false;
   }
 
   private static void RunTimeScale()

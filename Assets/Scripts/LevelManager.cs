@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -6,13 +5,6 @@ public class LevelManager : MonoBehaviour
   [SerializeField] private GameObject _winMenuUI;
 
   private int _blockCount;
-
-  public event Action OnGameOver;
-
-  private void Start()
-  {
-    OnGameOver += GameWin;
-  }
 
   private void OnEnable()
   {
@@ -40,6 +32,6 @@ public class LevelManager : MonoBehaviour
   {
     _blockCount--;
     if (_blockCount <= 0)
-      OnGameOver?.Invoke();
+      GameWin();
   }
 }

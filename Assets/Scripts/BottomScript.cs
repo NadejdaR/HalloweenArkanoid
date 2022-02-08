@@ -4,7 +4,7 @@ public class BottomScript : MonoBehaviour
 {
   [SerializeField] private PlayerStatManager _statManager;
   [SerializeField] private Ball _ball;
-  [SerializeField] private LossMenuScript _loss;
+  [SerializeField] private UIManager _loss;
 
   private void OnCollisionEnter2D(Collision2D col)
   {
@@ -12,7 +12,7 @@ public class BottomScript : MonoBehaviour
     _statManager.ReduceLife(_statManager.Life);
 
     if (_statManager.Life == 0)
-      _loss.Start();
+      _loss.LossGame();
     else ResetBall();
   }
 
