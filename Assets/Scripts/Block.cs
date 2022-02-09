@@ -11,8 +11,6 @@ public class Block : MonoBehaviour
   [SerializeField] private SpriteRenderer _spriteRenderer;
   [SerializeField] private bool _isSecret;
 
-  private PlayerStatManager _statManager;
-
   public static event Action OnCreated;
   public static event Action<Block> OnDestroyed;
   

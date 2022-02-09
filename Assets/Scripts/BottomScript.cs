@@ -12,7 +12,7 @@ public class BottomScript : MonoBehaviour
     _statManager.ReduceLife(_statManager.Life);
 
     if (_statManager.Life == 0)
-      _loss.LossGame();
+      _loss.LossGamePanel();
     else ResetBall();
   }
 

@@ -23,6 +23,15 @@ public class UIManager : MonoBehaviour
 
   public static bool GameIsPaused { get; private set; }
 
+  private void Update()
+  {
+    if (!Input.GetKeyDown(KeyCode.Escape)) return;
+    if (GameIsPaused)
+      ResumeBtn();
+    else
+      PauseBtn();
+  }
+  
   public void ExitBtn()
   {
 #if UNITY_EDITOR
@@ -62,7 +71,7 @@ public class UIManager : MonoBehaviour
     _settingMenuUI.SetActive(true);
   }
 
-  public void CloseSettingsBtn()
+  public void AcceptSettingsBtn()
   {
     _settingMenuUI.SetActive(false);
     _pauseMenuUI.SetActive(true);
@@ -74,13 +83,13 @@ public class UIManager : MonoBehaviour
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
   }
   
-  private void WinGame()
+  public void WinGamePanel()
   {
     _winMenuUI.SetActive(true);
     FinGame(_winTxtScore);
   }
   
-  public void LossGame()
+  public void LossGamePanel()
   {
     _lossMenuUI.SetActive(true);
     FinGame(_lossTxtScore);

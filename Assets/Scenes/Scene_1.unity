@@ -6699,7 +6699,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1449409498}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1038670278}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: AcceptSettingsBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1449409498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8732,7 +8744,7 @@ GameObject:
   - component: {fileID: 1914297653}
   - component: {fileID: 1914297655}
   m_Layer: 5
-  m_Name: ScoreTxt
+  m_Name: LossScoreTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9774,7 +9786,7 @@ GameObject:
   - component: {fileID: 2083613128}
   - component: {fileID: 2083613127}
   m_Layer: 5
-  m_Name: ScoreTxt (1)
+  m_Name: WinScoreTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10093,11 +10105,11 @@ PrefabInstance:
     - target: {fileID: 1516435122558602612, guid: 9ca68fafe6fab1b41a5ad4e37b647c50, type: 3}
       propertyPath: _loss
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1038670278}
     - target: {fileID: 1516435122558602612, guid: 9ca68fafe6fab1b41a5ad4e37b647c50, type: 3}
       propertyPath: _statManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7515803850409256094}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ca68fafe6fab1b41a5ad4e37b647c50, type: 3}
 --- !u!1001 &3192695093030029369

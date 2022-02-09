@@ -28,13 +28,13 @@ public class PlayerStatManager : MonoBehaviour
     UpdateScoreLbl();
   }
 
-  public void UpdateScoreLbl()
-  {
-    _scoreTxt.text = $"Score: {_playerStat.Score}";
-  }
-
   public void ReduceLife(int remainingLife)
   {
     LifeImg[remainingLife].gameObject.SetActive(false);
+  }
+
+  private void UpdateScoreLbl()
+  {
+    _scoreTxt.text = $"Score: {_playerStat.Score}";
   }
 }
