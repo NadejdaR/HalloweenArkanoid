@@ -26,13 +26,19 @@ public class Block : MonoBehaviour
 
   private void OnDestroy()
   {
+    if(_hits == 0)
+      return;
     OnDestroyed?.Invoke(this);
   }
 
   private void OnCollisionEnter2D(Collision2D col)
   {
     if (_isSecret)
+    {
       _spriteRenderer.enabled = true;
+      _isSecret = false;
+      return;
+    }
     if (_hits > 1)
       GetHit(1);
     else if (_hits == 1)

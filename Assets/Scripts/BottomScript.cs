@@ -8,12 +8,15 @@ public class BottomScript : MonoBehaviour
 
   private void OnCollisionEnter2D(Collision2D col)
   {
-    _statManager.Life--;
-    _statManager.ReduceLife(_statManager.Life);
+    if (col.gameObject.CompareTag(Tags.Ball))
+    {
+      _statManager.Life--;
+      _statManager.ReduceLife(_statManager.Life);
+      ResetBall();
+    }
 
     if (_statManager.Life == 0)
       _loss.LossGamePanel();
-    else ResetBall();
   }
 
   private void ResetBall()
