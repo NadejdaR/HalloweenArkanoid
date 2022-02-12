@@ -1,7 +1,14 @@
+using System;
 using UnityEngine;
 
 public class Pad : MonoBehaviour
 {
+  private Camera _mainCamera;
+  private void Start()
+  {
+    _mainCamera = Camera.main;
+  }
+
   private void Update()
   {
     FollowMouse();
@@ -13,9 +20,7 @@ public class Pad : MonoBehaviour
       return;
 
     Vector3 mousePosition = Input.mousePosition;
-    if (Camera.main == null) 
-      return;
-    Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+    Vector3 worldPosition = _mainCamera.ScreenToWorldPoint(mousePosition);
 
     Vector3 currentPosition = transform.position;
     currentPosition.x = worldPosition.x;

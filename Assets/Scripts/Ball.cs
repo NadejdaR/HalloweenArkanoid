@@ -4,9 +4,7 @@ public class Ball : MonoBehaviour
 {
   [Header("Base Settings")] 
   [SerializeField] private Rigidbody2D _rb;
-
   [SerializeField] private float _speed;
-  private Vector2 _direction;
 
   [Header("Pad Settings")] 
   [SerializeField] private Transform _padTransform;
@@ -21,9 +19,10 @@ public class Ball : MonoBehaviour
   [SerializeField] private int _yMin;
   [SerializeField] private int _yMax;
 
-  internal bool _isStarted;
+  private Vector2 _direction;
+  public bool _isStarted;
 
-  internal void Update()
+  public void StartBallSet()
   {
     if (_isStarted)
       return;

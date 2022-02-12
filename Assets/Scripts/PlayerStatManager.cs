@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,8 +7,12 @@ public class PlayerStatManager : MonoBehaviour
   [SerializeField] private PlayerStats _playerStat;
   [SerializeField] private Text _scoreTxt;
 
-  public List<Image> LifeImg;
-  [NonSerialized] public int Life;
+  [Header("Life")]
+  public int Life;
+  [SerializeField] private GameObject _lifeImg;
+  [SerializeField] private Transform _livesParent;
+
+  private readonly List<GameObject> _currentLivesImg = new List<GameObject>();
 
   private void OnEnable()
   {
@@ -23,14 +26,23 @@ public class PlayerStatManager : MonoBehaviour
 
   private void Start()
   {
-    Life = LifeImg.Count;
+    InstantiateLives();
     _playerStat.ResetScore();
     UpdateScoreLbl();
   }
 
   public void ReduceLife(int remainingLife)
   {
-    LifeImg[remainingLife].gameObject.SetActive(false);
+    _currentLivesImg[remainingLife].SetActive(false);
+  }
+
+  private void InstantiateLives()
+  {
+    for (int i=0; i < Life; i++)
+    {
+      GameObject Live = Instantiate(_lifeImg, _livesParent);
+      _currentLivesImg.Add(Live);
+    }
   }
 
   private void UpdateScoreLbl()

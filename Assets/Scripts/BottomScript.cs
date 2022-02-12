@@ -22,6 +22,6 @@ public class BottomScript : MonoBehaviour
   private void ResetBall()
   {
     _ball._isStarted = false;
-    _ball.Update();
+    _ball.StartBallSet();
   }
 }
