@@ -4,14 +4,20 @@ using UnityEngine;
 public class Pad : MonoBehaviour
 {
   private Camera _mainCamera;
+  private Transform _ballTransform;
+
   private void Start()
   {
     _mainCamera = Camera.main;
+    _ballTransform = FindObjectOfType<Ball>().transform;
   }
 
   private void Update()
   {
-    FollowMouse();
+    if (PlayerStatManager.Instance.NeedAutoplay)
+      FollowWithBall();
+    else
+      FollowMouse();
   }
 
   private void FollowMouse()
@@ -24,6 +30,15 @@ public class Pad : MonoBehaviour
 
     Vector3 currentPosition = transform.position;
     currentPosition.x = worldPosition.x;
+    transform.position = currentPosition;
+  }
+
+  private void FollowWithBall()
+  {
+    Vector3 ballWorldPosition = _ballTransform.position;
+
+    Vector3 currentPosition = transform.position;
+    currentPosition.x = ballWorldPosition.x;
     transform.position = currentPosition;
   }
 }

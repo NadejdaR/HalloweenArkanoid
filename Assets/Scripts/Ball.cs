@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Ball : MonoBehaviour
 {
@@ -22,6 +24,17 @@ public class Ball : MonoBehaviour
   private Vector2 _direction;
   public bool _isStarted;
 
+  private void Start()
+  {
+    if (PlayerStatManager.Instance.NeedAutoplay)
+      StartBall();
+  }
+
+  private void Update()
+  {
+    StartBallSet();
+  }
+
   public void StartBallSet()
   {
     if (_isStarted)
@@ -31,6 +44,12 @@ public class Ball : MonoBehaviour
 
     if (Input.GetMouseButtonDown(0))
       StartBall();
+  }
+  
+  public void ResetBall()
+  {
+    _isStarted = false;
+    StartBallSet();
   }
 
   private void OnCollisionEnter2D(Collision2D col)

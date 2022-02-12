@@ -5355,6 +5355,7 @@ MonoBehaviour:
   Life: 3
   _lifeImg: {fileID: 6232613313438849075, guid: 9c42b7b0b894a0741be728c9376e4465, type: 3}
   _livesParent: {fileID: 995416871}
+  _needAutoplay: 1
 --- !u!4 &1128104757
 Transform:
   m_ObjectHideFlags: 0

@@ -10,18 +10,11 @@ public class BottomScript : MonoBehaviour
   {
     if (col.gameObject.CompareTag(Tags.Ball))
     {
-      _statManager.Life--;
-      _statManager.ReduceLife(_statManager.Life);
-      ResetBall();
+      _statManager.ReduceLife();
+      _ball.ResetBall();
     }
 
     if (_statManager.Life == 0)
       _loss.LossGamePanel();
-  }
-
-  private void ResetBall()
-  {
-    _ball._isStarted = false;
-    _ball.StartBallSet();
   }
 }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStatManager : MonoBehaviour
+public class PlayerStatManager : SingletonMonoBehaviour<PlayerStatManager>
 {
   [SerializeField] private PlayerStats _playerStat;
   [SerializeField] private Text _scoreTxt;
@@ -11,8 +11,12 @@ public class PlayerStatManager : MonoBehaviour
   public int Life;
   [SerializeField] private GameObject _lifeImg;
   [SerializeField] private Transform _livesParent;
+  
+  [Header("Autoplay")]
+  [SerializeField] private bool _needAutoplay;
 
   private readonly List<GameObject> _currentLivesImg = new List<GameObject>();
+  public bool NeedAutoplay => _needAutoplay;
 
   private void OnEnable()
   {
@@ -31,17 +35,24 @@ public class PlayerStatManager : MonoBehaviour
     UpdateScoreLbl();
   }
 
-  public void ReduceLife(int remainingLife)
+  public void ReduceLife()
   {
-    _currentLivesImg[remainingLife].SetActive(false);
+    Life--;
+    InstantiateLives();
+  }
+
+  public void AddLife()
+  {
+    Life++;
+    InstantiateLives();
   }
 
   private void InstantiateLives()
   {
     for (int i=0; i < Life; i++)
     {
-      GameObject Live = Instantiate(_lifeImg, _livesParent);
-      _currentLivesImg.Add(Live);
+      GameObject live = Instantiate(_lifeImg, _livesParent);
+      _currentLivesImg.Add(live);
     }
   }
 
