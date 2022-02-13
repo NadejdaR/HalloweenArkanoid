@@ -32,6 +32,8 @@ public class LevelManager : MonoBehaviour
   {
     _blockCount--;
     if (_blockCount <= 0)
+    {
       GameWin();
+    }
   }
 }

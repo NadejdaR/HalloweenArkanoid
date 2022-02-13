@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStatManager : SingletonMonoBehaviour<PlayerStatManager>
+public class PlayerStatManager : MonoBehaviour
 {
   [SerializeField] private PlayerStats _playerStat;
   [SerializeField] private Text _scoreTxt;
@@ -11,12 +12,8 @@ public class PlayerStatManager : SingletonMonoBehaviour<PlayerStatManager>
   public int Life;
   [SerializeField] private GameObject _lifeImg;
   [SerializeField] private Transform _livesParent;
-  
-  [Header("Autoplay")]
-  [SerializeField] private bool _needAutoplay;
 
   private readonly List<GameObject> _currentLivesImg = new List<GameObject>();
-  public bool NeedAutoplay => _needAutoplay;
 
   private void OnEnable()
   {
@@ -35,6 +32,11 @@ public class PlayerStatManager : SingletonMonoBehaviour<PlayerStatManager>
     UpdateScoreLbl();
   }
 
+  private void Update()
+  {
+    UpdateTimeScale();
+  }
+
   public void ReduceLife()
   {
     Life--;
@@ -45,6 +47,12 @@ public class PlayerStatManager : SingletonMonoBehaviour<PlayerStatManager>
   {
     Life++;
     InstantiateLives();
+  }
+
+  private void UpdateTimeScale()
+  {
+    if(UIManager.GameIsPaused)
+      return;
   }
 
   private void InstantiateLives()

@@ -21,7 +21,8 @@ public class UIManager : MonoBehaviour
   [Header("Setting")]
   [SerializeField] private GameObject _settingMenuUI;
 
-  public static bool GameIsPaused { get; private set; }
+  private static bool _isGamePaused = false;
+  public static bool GameIsPaused => _isGamePaused;
 
   private void Update()
   {
@@ -104,7 +105,7 @@ public class UIManager : MonoBehaviour
   private void PauseGame()
   {
     PauseTimeScale();
-    GameIsPaused = true;
+    _isGamePaused = true;
   }
 
   private static void PauseTimeScale()
@@ -115,7 +116,7 @@ public class UIManager : MonoBehaviour
   private void RunGame()
   {
     RunTimeScale();
-    GameIsPaused = false;
+    _isGamePaused = false;
   }
 
   private static void RunTimeScale()
